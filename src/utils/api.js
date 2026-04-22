@@ -24,3 +24,9 @@ API.interceptors.response.use(
 );
 
 export default API;
+
+// Ping backend every 14 minutes to prevent Render sleeping
+const BACKEND_URL = '/api/health';
+setInterval(async () => {
+  try { await fetch(BACKEND_URL); } catch {}
+}, 14 * 60 * 1000);

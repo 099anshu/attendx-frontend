@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api' });
+// In production (Vercel), call Render directly
+// In development (localhost), use the vite proxy
+const BASE_URL = import.meta.env.PROD
+  ? 'https://attendx-backend-217u.onrender.com/api'
+  : '/api';
+
+const API = axios.create({ baseURL: BASE_URL });
 
 API.interceptors.request.use(config => {
   const token = localStorage.getItem('token');

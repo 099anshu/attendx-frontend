@@ -9,7 +9,8 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'https://attendx-backend-217u.onrender.com',
-        changeOrigin: true
+        changeOrigin: true,
+        secure: true,
       }
     }
   }
